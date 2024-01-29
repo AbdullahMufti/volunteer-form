@@ -1,113 +1,303 @@
-import Image from "next/image";
+"use client";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
+import EachField from "@/components/EachField";
+import { EachSelect } from "@/components/EachSelect";
+import EachSwitch from "@/components/EachSwitch";
+
+const formSchema = z.object({
+  Name: z.string().min(6, { message: "Name must be at least 6 characters" }),
+  FatherzName: z
+    .string()
+    .min(6, { message: "Name must be at least 6 characters" }),
+  Agegroup: z
+    .string()
+    .min(1, { message: "Select atleat one value" })
+    .optional(),
+  Gender: z.string().min(1, { message: "Select atleat one value" }).optional(),
+
+  Profession: z
+    .string({
+      required_error: "This field is requiredd",
+    })
+    .min(1, { message: "This field is required" }),
+  PreviousExperience: z
+    .string({ required_error: "This field is requiredd" })
+    .min(1, { message: "This field is required" }),
+  Qualification: z
+    .string({ required_error: "This field is requiredd" })
+    .min(1, { message: "This field is required" }),
+  AvailableGadgets: z
+    .string({ required_error: "This field is requiredd" })
+    .min(1, { message: "This field is required" }),
+  City: z
+    .string({ required_error: "This field is requiredd" })
+    .min(1, { message: "This field is required" }),
+  Country: z
+    .string({ required_error: "This field is requiredd" })
+    .min(1, { message: "This field is required" }),
+  WhatsappNumber: z
+    .string({ required_error: "This field is requiredd" })
+    .min(1, { message: "This field is required" }),
+  JoinWhatsapp: z.boolean().default(false).optional(),
+  WordOfQuran: z.boolean().default(false).optional(),
+  SocialMedia: z.boolean().default(false).optional(),
+  VideoPhotoEditing: z.boolean().default(false).optional(),
+  ManageWebsites: z.boolean().default(false).optional(),
+  ITRelated: z.boolean().default(false).optional(),
+  WhyFriend: z
+    .string({ required_error: "This field is requiredd" })
+    .min(1, { message: "This field is required" }),
+  HowHelpUs: z
+    .string({ required_error: "This field is requiredd" })
+    .min(1, { message: "This field is required" }),
+  HowManyHours: z
+    .string({ required_error: "This field is requiredd" })
+    .min(1, { message: "This field is required" }),
+});
 
 export default function Home() {
+  // ...
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      Name: "",
+      FatherzName: "",
+      Profession: "",
+      Agegroup: "",
+      Gender: "",
+      PreviousExperience: "",
+      Qualification: "",
+      AvailableGadgets: "",
+      City: "",
+      Country: "",
+      WhatsappNumber: "",
+      JoinWhatsapp: false,
+      WordOfQuran: false,
+      SocialMedia: false,
+      VideoPhotoEditing: false,
+      ManageWebsites: false,
+      ITRelated: false,
+      WhyFriend: "",
+      HowHelpUs: "",
+      HowManyHours: "",
+    },
+  });
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values);
+  }
+  function ResetNow(values: z.infer<typeof formSchema>) {
+    values.Name = "";
+    values.FatherzName = "";
+    values.Profession = "";
+    values.Agegroup = "";
+    values.Gender = "";
+    values.PreviousExperience = "";
+    values.Qualification = "";
+    values.AvailableGadgets = "";
+    values.City = "";
+    values.Country = "";
+    values.WhatsappNumber = "";
+    values.JoinWhatsapp = false;
+    values.WordOfQuran = false;
+    values.SocialMedia = false;
+    values.VideoPhotoEditing = false;
+    values.ManageWebsites = false;
+    values.ITRelated = false;
+    values.WhyFriend = "";
+    values.HowHelpUs = "";
+    values.HowManyHours = "";
+    console.log(values);
+  }
+  const CNAME = "w-full   my-2 px-5";
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <div className="mx-auto max-w-3xl">
+      <h1 className="text-3xl text-center my-8">Volunteer Registration Form</h1>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8 w-full"
+        >
+          <div className=" flex flex-wrap  ">
+            <EachField
+              type="text"
+              control={form.control}
+              Label="Name"
+              Name="Name"
+              placeHolder="Name"
+              CName={CNAME}
             />
-          </a>
-        </div>
-      </div>
+            <EachField
+              type="text"
+              control={form.control}
+              Label="Father's Name"
+              Name="FatherzName"
+              placeHolder="Father's Name"
+              CName={CNAME}
+            />
+            <EachField
+              type="text"
+              control={form.control}
+              Label="Profession"
+              Name="Profession"
+              placeHolder="Your Profession"
+              CName={CNAME}
+            />
+            <EachSelect
+              control={form.control}
+              Label="Gender"
+              Name="Gender"
+              MainLabel="Select your gender"
+              Vals={["male", "femal"]}
+              CName={CNAME}
+            />
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+            <EachSelect
+              control={form.control}
+              Label="Age Group"
+              Name="Agegroup"
+              MainLabel="Select your age group"
+              Vals={["12-18", "18-25", "26-35", "36-45", "46-55", "55+"]}
+              CName={CNAME}
+            />
+            <EachField
+              type="text"
+              control={form.control}
+              Label="Previous Experience"
+              Name="PreviousExperience"
+              placeHolder="Your Experience"
+              CName={CNAME}
+            />
+            <EachField
+              type="text"
+              control={form.control}
+              Label="Qualification"
+              Name="Qualification"
+              placeHolder="B.A / BSc / M.S / Phd"
+              CName={CNAME}
+            />
+            <EachField
+              type="text"
+              control={form.control}
+              Label="Available Gadgets"
+              Name="AvailableGadgets"
+              placeHolder="Mobile / PC / Laptop / Tablet"
+              CName={CNAME}
+            />
+            <EachField
+              type="text"
+              control={form.control}
+              Label="City"
+              Name="City"
+              placeHolder="Your City"
+              CName={CNAME}
+            />
+            <EachField
+              type="text"
+              control={form.control}
+              Label="Country"
+              Name="Country"
+              placeHolder="Your Country"
+              CName={CNAME}
+            />
+            <EachField
+              type="number"
+              control={form.control}
+              Label="Whatsapp Contact Number"
+              Name="WhatsappNumber"
+              placeHolder="Your Country"
+              CName={CNAME}
+            />
+            <EachSwitch
+              disabled={false}
+              control={form.control}
+              Label="Would you like to join our Whatsapp group ?"
+              Name="JoinWhatsapp"
+              CName={CNAME}
+            />
+            <EachSwitch
+              disabled={form.getValues("JoinWhatsapp") === false}
+              control={form.control}
+              Label="Would you like to help us spread word of Quran ?"
+              Name="WordOfQuran"
+              CName={CNAME}
+            />
+            <EachSwitch
+              disabled={form.getValues("JoinWhatsapp") === false}
+              control={form.control}
+              Label="Would you like to help us manage our social media accounts ?"
+              Name="SocialMedia"
+              CName={CNAME}
+            />
+            <EachSwitch
+              disabled={form.getValues("JoinWhatsapp") === false}
+              control={form.control}
+              Label="Would you like to offer video and Photo editing assistance ?"
+              Name="VideoPhotoEditing"
+              CName={CNAME}
+            />
+            <EachSwitch
+              disabled={form.getValues("JoinWhatsapp") === false}
+              control={form.control}
+              Label="Would you like to help us manage our websites ?"
+              Name="ManageWebsites"
+              CName={CNAME}
+            />
+            <EachSwitch
+              disabled={form.getValues("JoinWhatsapp") === false}
+              control={form.control}
+              Label="Would you like to offer IT related assistance (Programming, AI & Animations e.t.c) ?"
+              Name="ITRelated"
+              CName={CNAME}
+            />
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+            <EachField
+              type="text"
+              control={form.control}
+              Label="Why do you intend to become a volunteer ?"
+              Name="WhyFriend"
+              placeHolder=""
+              CName={CNAME}
+            />
+            <EachField
+              type="text"
+              control={form.control}
+              Label="If you have a unique idea to help us, please let us know ?"
+              Name="HowHelpUs"
+              placeHolder=""
+              CName={CNAME}
+            />
+            <EachField
+              type="text"
+              control={form.control}
+              Label="How Many Hours can you spare for us weekly ?"
+              Name="HowManyHours"
+              placeHolder=""
+              CName={CNAME}
+            />
+          </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          <Button type="submit">Submit</Button>
+          <Button type="reset">Rest</Button>
+        </form>
+      </Form>
+    </div>
   );
 }
