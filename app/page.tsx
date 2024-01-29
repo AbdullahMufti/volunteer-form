@@ -233,35 +233,35 @@ export default function Home() {
               CName={CNAME}
             />
             <EachSwitch
-              disabled={form.getValues("JoinWhatsapp") === false}
+              disabled={false}
               control={form.control}
               Label="Would you like to help us spread word of Quran ?"
               Name="WordOfQuran"
               CName={CNAME}
             />
             <EachSwitch
-              disabled={form.getValues("JoinWhatsapp") === false}
+              disabled={form.getValues("WordOfQuran") === false}
               control={form.control}
               Label="Would you like to help us manage our social media accounts ?"
               Name="SocialMedia"
               CName={CNAME}
             />
             <EachSwitch
-              disabled={form.getValues("JoinWhatsapp") === false}
+              disabled={form.getValues("WordOfQuran") === false}
               control={form.control}
               Label="Would you like to offer video and Photo editing assistance ?"
               Name="VideoPhotoEditing"
               CName={CNAME}
             />
             <EachSwitch
-              disabled={form.getValues("JoinWhatsapp") === false}
+              disabled={form.getValues("WordOfQuran") === false}
               control={form.control}
               Label="Would you like to help us manage our websites ?"
               Name="ManageWebsites"
               CName={CNAME}
             />
             <EachSwitch
-              disabled={form.getValues("JoinWhatsapp") === false}
+              disabled={form.getValues("WordOfQuran") === false}
               control={form.control}
               Label="Would you like to offer IT related assistance (Programming, AI & Animations e.t.c) ?"
               Name="ITRelated"
