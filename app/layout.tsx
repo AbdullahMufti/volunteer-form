@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Volunteer Registration Form",
-  description: "Fill this form to become a volunteer",
+  title: "Friends of Al-Mawrid Registration Form",
+  description: "Fill this form to become a friend of Al-Mawrid",
 };
 
 export default function RootLayout({

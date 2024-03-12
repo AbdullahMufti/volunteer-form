@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <script>
+        function SubmitQuery(str) {
+            alert("function triggered")
+            if (str == "") {
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            }
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("txtHint").innerHTML = this.responseText;
+                }
+            }
+
+            xmlhttp.open("GET", "ViewApplicants.php", true);
+            xmlhttp.send();
+        }
+
+        function SaveAsExcel() {
+            var csv = [];
+            var rows = document.querySelectorAll("table.ExcelData tr");
+
+            for (var i = 0; i < rows.length; i++) {
+                var row = [],
+                    cols = rows[i].querySelectorAll("td, th");
+
+                for (var j = 0; j < cols.length; j++)
+                    row.push(cols[j].innerText);
+
+                csv.push(row.join("	"));
+            }
+
+            // Download CSV file
+            downloadCSV(csv.join("\n"), "ApplicationData.xls");
+        }
+
+        function downloadCSV(csv, filename) {
+            var csvFile;
+            var downloadLink;
+
+            // CSV file
+            csvFile = new Blob([csv], {
+                type: "text/csv"
+            });
+
+            // Download link
+            downloadLink = document.createElement("a");
+
+            // File name
+            downloadLink.download = filename;
+
+            // Create a link to the file
+            downloadLink.href = window.URL.createObjectURL(csvFile);
+
+            // Hide download link
+            downloadLink.style.display = "none";
+
+            // Add the link to DOM
+            document.body.appendChild(downloadLink);
+
+            // Click download link
+            downloadLink.click();
+        }
+    </script>
+</head>
+
+<body>
+    <div class="col-md-14 welcome-text" align="center">
+        <h1>Welcome to Friends of Almawrid Backend</h1>
+        <div id="ResultFromDB">
+            <div id="txtHint" align="center"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+<?php
+$mysqli = new mysqli("localhost", "msajjad_mufti", "Gcpro_123", "msajjad_friends_of_almawrid");
+
+// Check connection
+if ($mysqli->connect_errno) {
+    echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+    exit();
+}
+
+// Perform query
+if ($result = $mysqli->query("SELECT `ID`, `Name`, `FatherzName`, `Profession`, `Agegroup`, `Gender`, `PreviousExperience`, `Qualification`, `AvailableGadgets`, `City`, `Country`, `WhatsappNumber`, `JoinWhatsapp`, `WordOfQuran`, `SocialMedia`, `VideoPhotoEditing`, `ManageWebsites`, `Translation`, `ITRelated`, `WhyFriend`, `HowHelpUs`, `HowManyHours`, `DateTime` FROM `Friends2024`")) {
+    echo "<button onclick='SaveAsExcel();' class='btn btn-primary'>Download Data in excel  format</button>";
+
+    echo "<table id='ResultFromDB' class='ExcelData' BORDER='1'><thead><tr>";
+    echo "<th style='text-align:center;'>ID</th>";
+    echo "<th style='text-align:center;'>Name</th>";
+    echo "<th style='text-align:center;'>Father Name</th>";
+    echo "<th style='text-align:center;'>Profession</th>";
+    echo "<th style='text-align:center;'>Agegroup</th>";
+    echo "<th style='text-align:center;'>Gender</th>";
+    echo "<th style='text-align:center;'>Previous Experience</th>";
+    echo "<th style='text-align:center;'>Qualification</th>";
+    echo "<th style='text-align:center;'>Available Gadgets</th>";
+    echo "<th style='text-align:center;'>City</th>";
+    echo "<th style='text-align:center;'>Country</th>";
+    echo "<th style='text-align:center;'>Whatsapp Number</th>";
+    echo "<th style='text-align:center;'>Join Whatsapp</th>";
+    echo "<th style='text-align:center;'>Spread Word OfQuran</th>";
+    echo "<th style='text-align:center;'>SocialMedia</th>";
+    echo "<th style='text-align:center;'>Video Photo Editing</th>";
+    echo "<th style='text-align:center;'>Manage Websites</th>";
+    echo "<th style='text-align:center;'>Translation</th>";
+    echo "<th style='text-align:center;'>IT Related</th>";
+    echo "<th style='text-align:center;'>Why Friend</th>";
+    echo "<th style='text-align:center;'>How Help Us</th>";
+    echo "<th style='text-align:center;'>How Many Hours</th>";
+    echo "<th style='text-align:center;'>Date & Time</th>";
+
+    echo "</tr></thead> <tbody>";
+
+    while ($row = mysqli_fetch_array($result)) {
+        echo "<tr>";
+        for ($x = 0; $x < 12; $x++) {
+            echo "<td>" . $row[$x] . "</td>";
+        }
+        echo "</tr>";
+    }
+
+    echo "</tbody></table></div>";
+}
+
+$mysqli->close();
+?>
