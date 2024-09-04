@@ -142,10 +142,88 @@ export default function Home() {
   const CNAME = "w-full   my-2 px-5";
 
   return (
-    <div className="mx-auto max-w-3xl">
-      <h1 className="text-3xl text-center my-8">
-        Friend of Al-Mawrid Registration Form
-      </h1>
+    <div className="mx-auto md:max-w-3xl">
+      <div dir="rtl" className="leading-10 mx-10 text-justify">
+        <h2 className="text-xl text-center my-8">فرینڈز آف المورد</h2>
+        <p>السلام علیکم،</p>
+        <p>
+          آئیے مل کر خدا کا پیغام عام کریں۔ دین کے بہت سے احکام ہیں، جن پر ہم شب
+          روز عمل کرتے ہیں۔ ان میں ایک حکم اللہ کے دین کی نصرت یعنی مدد ہے۔اس
+          وقت ، اسلام سمیت تمام ادیان کو بہت سے چیلنجز کا سامنا ہے۔ ہم مسلمانوں
+          کا فرض ہے کہ اس مشکل دور میں اسلام کو&nbsp; درپیش ان مسائل سے نکالیں۔
+          المورد اس بات پر یقین رکھتا ہے کہ تمام چیلنجز کا مقابلہ اسلام کے صحیح
+          فہم&nbsp; کو پھیلا&nbsp; کر کیا جاسکتا ہے۔
+        </p>
+        <p>
+          تو آئیے خدا کے خالص پیغام کو تمام انسانوں تک پہنچانے کے لیے&nbsp; اپنی
+          پیشہ ورانہ خدمات&nbsp; رضا کارانہ طور پر&nbsp; فراہم کرکے المورد کے
+          ساتھ عملی تعاون کیجیے۔
+        </p>
+        <p>جوائن کرنے والوں کو&nbsp; درج ذیل فوائد حاصل ہوں گی:</p>
+        <p>
+          1۔ المورد سوسائٹی کی ایکٹیویٹیز (اوپن مائیک, سلسلہ محاضرات اور بک کلب
+          وغیرہ) میں شامل ہونے کا موقع دیا جائے۔
+        </p>
+        <p>
+          2: غامدی صاحب کے دورہ پاکستان کے موقع پر منعقد کیے جانے والے پروگرامز
+          میں شرکت کے لئے فرینڈز آف المورد کو ترجیح دی جائے گی۔&nbsp;
+        </p>
+        <p>
+          3-&nbsp; فرینڈز آف المورد کے لئے ماہانہ ایک سیشن ہو گا جس میں علماء کے
+          ساتھ تربیتی اور علمی سوال و جواب کا موقع دیا جائے گا۔
+        </p>
+        <p>
+          نوٹ: نیچے دئیے گئے فارم کو فل کر کے فرینڈز آف المورد میں شمولیت اختیار
+          کی جا سکتی ہے۔
+        </p>
+        <p>
+          <br />
+        </p>
+      </div>
+      <div className="leading-10 mx-10 text-justify">
+        <h2 className="text-xl text-center my-8">Friends of Al Mawrid,</h2>
+        <p>
+          Assalam o Alaikum! Let&apos;s come together to spread the message of
+          God.
+        </p>
+        <p>
+          In the teachings of Islam, there are many commands that we follow day
+          and night. One of these commands is the support of the religion of
+          Allah, which is known as &ldquo;Nusrat&ldquo; in Islam. At this time,
+          Islam, like all other religions, faces many challenges. As Muslims, we
+          must address the challenges confronting Islam during these difficult
+          times. Al Mawrid believes that all challenges can be met by spreading
+          the correct understanding of Islam.
+        </p>
+        <p>
+          Let us actively collaborate with Al Mawrid by offering our
+          professional and voluntary services to spread the unadulterated
+          message of God to every corner.
+        </p>
+        <p>Those who join us will receive the following benefits:</p>
+        <p>
+          1) The opportunity to participate in Al Mawrid Society activities
+          (such as open mic sessions, lecture series and book clubs).
+        </p>
+        <p>
+          2) Friends of Almawrid will be given preference to participate in the
+          programs organized on the occasion of Javed Ahmad Ghamdi&apos;s visit
+          to Pakistan.
+        </p>
+        <p>
+          3) A monthly meetup for Friends, with educational sessions and
+          question-and-answer opportunities with scholars.
+        </p>
+        <p>
+          Note: By filling out the form below, one can opt for Friends of Al
+          Mawrid membership.
+        </p>
+      </div>
+      <p>
+        <br />
+      </p>
+      <h2 className="text-xl text-center my-8"> Registration Form</h2>
+
       {!Result && (
         <Form {...form}>
           <form
