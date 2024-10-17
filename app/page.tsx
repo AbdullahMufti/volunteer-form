@@ -7,7 +7,12 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 
-import { InputField, SelectField, SwitchField } from "@/components/CustomField";
+import {
+  InputField,
+  SelectField,
+  SwitchField,
+  TextArea,
+} from "@/components/CustomField";
 import { useState } from "react";
 import axios from "axios";
 
@@ -21,7 +26,7 @@ const formSchema = z.object({
     .min(1, { message: "Select atleat one value" })
     .optional(),
   Gender: z.string().min(1, { message: "Select atleat one value" }).optional(),
-
+  CNIC: z.string().min(13, { message: "Enter your CNIC number" }),
   Profession: z
     .string({
       required_error: "This field is requiredd",
@@ -45,21 +50,10 @@ const formSchema = z.object({
   WhatsappNumber: z
     .string({ required_error: "This field is requiredd" })
     .min(1, { message: "This field is required" }),
-  JoinWhatsapp: z.boolean().default(false).optional(),
-  WordOfQuran: z.boolean().default(false).optional(),
-  SocialMedia: z.boolean().default(false).optional(),
-  VideoPhotoEditing: z.boolean().default(false).optional(),
-  ManageWebsites: z.boolean().default(false).optional(),
-  Translation: z.boolean().default(false).optional(),
-  ITRelated: z.boolean().default(false).optional(),
-  Society: z.boolean().default(false).optional(),
   WhyFriend: z
     .string({ required_error: "This field is requiredd" })
     .min(1, { message: "This field is required" }),
   HowHelpUs: z
-    .string({ required_error: "This field is requiredd" })
-    .min(1, { message: "This field is required" }),
-  HowManyHours: z
     .string({ required_error: "This field is requiredd" })
     .min(1, { message: "This field is required" }),
 });
@@ -67,6 +61,8 @@ const formSchema = z.object({
 export default function Home() {
   const [Result, setResult] = useState(false);
   const [ServerMessage, setServerMessage] = useState("");
+
+  const [English, setEnglish] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -76,23 +72,15 @@ export default function Home() {
       Profession: "",
       Agegroup: "",
       Gender: "",
+      CNIC: "",
       PreviousExperience: "",
       Qualification: "",
       AvailableGadgets: "",
       City: "",
       Country: "",
       WhatsappNumber: "",
-      JoinWhatsapp: false,
-      WordOfQuran: false,
-      SocialMedia: false,
-      VideoPhotoEditing: false,
-      Translation: false,
-      ManageWebsites: false,
-      ITRelated: false,
-      Society: false,
-      WhyFriend: "",
+      WhyFriend: "---",
       HowHelpUs: "",
-      HowManyHours: "",
     },
   });
   async function SaveToDB(kQuery: string) {
@@ -120,19 +108,7 @@ export default function Home() {
     const data = ``;
 
     const kQuery = `(
-      "${values.Name}", "${values.FatherzName}", "${values.Profession}", "${
-      values.Agegroup
-    }", "${values.Gender}", "${values.PreviousExperience}", "${
-      values.Qualification
-    }", "${values.AvailableGadgets}", "${values.City}", "${values.Country}", "${
-      values.WhatsappNumber
-    }", "${values.JoinWhatsapp ? 1 : 0}", "${values.WordOfQuran ? 1 : 0}", "${
-      values.SocialMedia ? 1 : 0
-    }", "${values.VideoPhotoEditing ? 1 : 0}", "${
-      values.ManageWebsites ? 1 : 0
-    }", "${values.Translation ? 1 : 0}", "${values.ITRelated ? 1 : 0}","${
-      values.Society ? 1 : 0
-    }", "${values.WhyFriend}", "${values.HowHelpUs}", "${values.HowManyHours}"
+      "${values.Name}", "${values.FatherzName}", "${values.Profession}", "${values.Agegroup}", "${values.Gender}", "${values.PreviousExperience}", "${values.Qualification}", "${values.AvailableGadgets}", "${values.City}", "${values.Country}", "${values.WhatsappNumber}", "${values.WhyFriend}", "${values.HowHelpUs}"
     )`;
     SaveToDB(kQuery);
   }
@@ -145,43 +121,50 @@ export default function Home() {
     <div className="mx-auto md:max-w-3xl">
       <div dir="rtl" className="leading-10 mx-10 text-justify">
         <h2 className="text-xl text-center my-8">فرینڈز آف المورد</h2>
-        <p>السلام علیکم،</p>
-        <p>
-          آئیے مل کر خدا کا پیغام عام کریں۔ دین کے بہت سے احکام ہیں، جن پر ہم شب
-          روز عمل کرتے ہیں۔ ان میں ایک حکم اللہ کے دین کی نصرت یعنی مدد ہے۔اس
-          وقت ، اسلام سمیت تمام ادیان کو بہت سے چیلنجز کا سامنا ہے۔ ہم مسلمانوں
-          کا فرض ہے کہ اس مشکل دور میں اسلام کو&nbsp; درپیش ان مسائل سے نکالیں۔
-          المورد اس بات پر یقین رکھتا ہے کہ تمام چیلنجز کا مقابلہ اسلام کے صحیح
-          فہم&nbsp; کو پھیلا&nbsp; کر کیا جاسکتا ہے۔
-        </p>
-        <p>
-          تو آئیے خدا کے خالص پیغام کو تمام انسانوں تک پہنچانے کے لیے&nbsp; اپنی
-          پیشہ ورانہ خدمات&nbsp; رضا کارانہ طور پر&nbsp; فراہم کرکے المورد کے
-          ساتھ عملی تعاون کیجیے۔
-        </p>
-        <p>جوائن کرنے والوں کو&nbsp; درج ذیل فوائد حاصل ہوں گی:</p>
-        <p>
-          1۔ المورد سوسائٹی کی ایکٹیویٹیز (اوپن مائیک, سلسلہ محاضرات اور بک کلب
-          وغیرہ) میں شامل ہونے کا موقع دیا جائے۔
-        </p>
-        <p>
-          2: غامدی صاحب کے دورہ پاکستان کے موقع پر منعقد کیے جانے والے پروگرامز
-          میں شرکت کے لئے فرینڈز آف المورد کو ترجیح دی جائے گی۔&nbsp;
-        </p>
-        <p>
-          3-&nbsp; فرینڈز آف المورد کے لئے ماہانہ ایک سیشن ہو گا جس میں علماء کے
-          ساتھ تربیتی اور علمی سوال و جواب کا موقع دیا جائے گا۔
-        </p>
-        <p>
-          نوٹ: نیچے دئیے گئے فارم کو فل کر کے فرینڈز آف المورد میں شمولیت اختیار
-          کی جا سکتی ہے۔
-        </p>
-        <p>
+        <button onClick={() => setEnglish(true)}>English</button>
+        <button onClick={() => setEnglish(false)}>اردو</button>
+        
+        <div>
+          <p>السلام علیکم،</p>
+          <p>
+            آئیے مل کر خدا کا پیغام عام کریں۔ دین کے بہت سے احکام ہیں، جن پر ہم
+            شب روز عمل کرتے ہیں۔ ان میں ایک حکم اللہ کے دین کی نصرت یعنی مدد
+            ہے۔اس وقت ، اسلام سمیت تمام ادیان کو بہت سے چیلنجز کا سامنا ہے۔ ہم
+            مسلمانوں کا فرض ہے کہ اس مشکل دور میں اسلام کو&nbsp; درپیش ان مسائل
+            سے نکالیں۔ المورد اس بات پر یقین رکھتا ہے کہ تمام چیلنجز کا مقابلہ
+            اسلام کے صحیح فہم&nbsp; کو پھیلا&nbsp; کر کیا جاسکتا ہے۔
+          </p>
+          <p>
+            تو آئیے خدا کے خالص پیغام کو تمام انسانوں تک پہنچانے کے لیے&nbsp;
+            اپنی پیشہ ورانہ خدمات&nbsp; رضا کارانہ طور پر&nbsp; فراہم کرکے
+            المورد کے ساتھ عملی تعاون کیجیے۔
+          </p>
           <br />
-        </p>
+          <p>جوائن کرنے والوں کو&nbsp; درج ذیل فوائد حاصل ہوں گی:</p>
+          <p>
+            1۔ المورد سوسائٹی کی ایکٹیویٹیز (اوپن مائیک, سلسلہ محاضرات اور بک
+            کلب وغیرہ) میں شامل ہونے کا موقع دیا جائے گا۔
+          </p>
+          <p>
+            2: غامدی صاحب کے دورہ پاکستان کے موقع پر منعقد کیے جانے والے
+            پروگرامز میں شرکت کے لئے فرینڈز آف المورد کو ترجیح دی جائے گی۔&nbsp;
+          </p>
+          <p>
+            3-&nbsp; فرینڈز آف المورد کے لئے ماہانہ ایک سیشن ہو گا جس میں علماء
+            کے ساتھ تربیتی اور علمی سوال و جواب کا موقع دیا جائے گا۔
+          </p>
+          <p>
+            نوٹ: نیچے دئیے گئے فارم کو فل کر کے فرینڈز آف المورد میں شمولیت
+            اختیار کی جا سکتی ہے۔
+          </p>
+          <p>
+            <br />
+          </p>
+        </div>
       </div>
+      
       <div className="leading-10 mx-10 text-justify">
-        <h2 className="text-xl text-center my-8">Friends of Al Mawrid,</h2>
+        <h2 className="text-xl text-center my-8">Friends of Al Mawrid</h2>
         <p>
           Assalam o Alaikum! Let&apos;s come together to spread the message of
           God.
@@ -200,6 +183,7 @@ export default function Home() {
           professional and voluntary services to spread the unadulterated
           message of God to every corner.
         </p>
+        <br />
         <p>Those who join us will receive the following benefits:</p>
         <p>
           1) The opportunity to participate in Al Mawrid Society activities
@@ -219,11 +203,11 @@ export default function Home() {
           Mawrid membership.
         </p>
       </div>
+      
       <p>
         <br />
       </p>
       <h2 className="text-xl text-center my-8"> Registration Form</h2>
-
       {!Result && (
         <Form {...form}>
           <form
@@ -262,6 +246,14 @@ export default function Home() {
                 Name="Gender"
                 MainLabel="Select your gender"
                 Vals={["male", "femal"]}
+                CName={CNAME}
+              />
+              <InputField
+                type="text"
+                control={form.control}
+                Label="CNIC"
+                Name="CNIC"
+                placeHolder="Enter your CNIC number"
                 CName={CNAME}
               />
 
@@ -313,7 +305,6 @@ export default function Home() {
                 placeHolder="Your City"
                 CName={CNAME}
               />
-
               <InputField
                 type="tel"
                 pattern="\+?[0-9\-]{1,}"
@@ -323,84 +314,13 @@ export default function Home() {
                 placeHolder="Your Whatsapp contact number"
                 CName={CNAME}
               />
-              <SwitchField
-                disabled={false}
+              <TextArea
+                type="textarea"
                 control={form.control}
-                Label="Would you like to join our Whatsapp group ?"
-                Name="JoinWhatsapp"
-                CName={CNAME}
-              />
-              <SwitchField
-                disabled={false}
-                control={form.control}
-                Label="Would you like to help us spread word of Quran ?"
-                Name="WordOfQuran"
-                CName={CNAME}
-              />
-              <SwitchField
-                disabled={false}
-                control={form.control}
-                Label="Would you like to help us manage our social media accounts ?"
-                Name="SocialMedia"
-                CName={CNAME}
-              />
-              <SwitchField
-                disabled={false}
-                control={form.control}
-                Label="Would you like to offer video and Photo editing assistance ?"
-                Name="VideoPhotoEditing"
-                CName={CNAME}
-              />
-              <SwitchField
-                disabled={false}
-                control={form.control}
-                Label="Would you like help us in translating books and subtitling videos ?"
-                Name="Translation"
-                CName={CNAME}
-              />
-              <SwitchField
-                disabled={false}
-                control={form.control}
-                Label="Would you like to help us manage our websites ?"
-                Name="ManageWebsites"
-                CName={CNAME}
-              />
-              <SwitchField
-                disabled={false}
-                control={form.control}
-                Label="Would you like to offer IT related assistance (Programming, AI & Animations e.t.c) ?"
-                Name="ITRelated"
-                CName={CNAME}
-              />
-              <SwitchField
-                disabled={false}
-                control={form.control}
-                Label="Would you like to participate in the activities of Almawrid Society i.e. Open Mic Sessions, Book Club etc. ?"
-                Name="Society"
-                CName={CNAME}
-              />
-
-              <InputField
-                type="text"
-                control={form.control}
-                Label="Why do you intend to become a friend of al-mawrid ?"
-                Name="WhyFriend"
-                placeHolder=""
-                CName={CNAME}
-              />
-              <InputField
-                type="text"
-                control={form.control}
-                Label="If you have a unique idea to help us, please let us know ?"
+                Label="How can you help Al-Mawarid in conveying the message of religion to the people?"
+                Label2="دین کا پیغام لوگوں تک
+              پہنچانے میں آپ کس طرح المورد کی مدد کر سکتے ہیں؟"
                 Name="HowHelpUs"
-                placeHolder=""
-                CName={CNAME}
-              />
-              <InputField
-                type="number"
-                control={form.control}
-                Label="How Many Hours can you spare for us weekly ?"
-                Name="HowManyHours"
                 placeHolder=""
                 CName={CNAME}
               />
