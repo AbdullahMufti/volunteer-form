@@ -15,6 +15,7 @@ import {
 } from "@/components/CustomField";
 import { useState } from "react";
 import axios from "axios";
+import Image from "next/image";
 
 const formSchema = z.object({
   Name: z.string().min(6, { message: "Name must be at least 6 characters" }),
@@ -50,9 +51,6 @@ const formSchema = z.object({
   WhatsappNumber: z
     .string({ required_error: "This field is requiredd" })
     .min(1, { message: "This field is required" }),
-  WhyFriend: z
-    .string({ required_error: "This field is requiredd" })
-    .min(1, { message: "This field is required" }),
   HowHelpUs: z
     .string({ required_error: "This field is requiredd" })
     .min(1, { message: "This field is required" }),
@@ -79,7 +77,6 @@ export default function Home() {
       City: "",
       Country: "",
       WhatsappNumber: "",
-      WhyFriend: "---",
       HowHelpUs: "",
     },
   });
@@ -108,7 +105,7 @@ export default function Home() {
     const data = ``;
 
     const kQuery = `(
-      "${values.Name}", "${values.FatherzName}", "${values.Profession}", "${values.Agegroup}", "${values.Gender}", "${values.PreviousExperience}", "${values.Qualification}", "${values.AvailableGadgets}", "${values.City}", "${values.Country}", "${values.WhatsappNumber}", "${values.WhyFriend}", "${values.HowHelpUs}"
+      "${values.Name}", "${values.FatherzName}", "${values.Profession}", "${values.Agegroup}", "${values.Gender}", "${values.CNIC}", "${values.PreviousExperience}", "${values.Qualification}", "${values.AvailableGadgets}", "${values.City}", "${values.Country}", "${values.WhatsappNumber}",  "${values.HowHelpUs}"
     )`;
     SaveToDB(kQuery);
   }
@@ -119,91 +116,148 @@ export default function Home() {
 
   return (
     <div className="mx-auto md:max-w-3xl">
-      <div dir="rtl" className="leading-10 mx-10 text-justify">
-        <h2 className="text-xl text-center my-8">فرینڈز آف المورد</h2>
-        <button onClick={() => setEnglish(true)}>English</button>
-        <button onClick={() => setEnglish(false)}>اردو</button>
-        
-        <div>
-          <p>السلام علیکم،</p>
-          <p>
-            آئیے مل کر خدا کا پیغام عام کریں۔ دین کے بہت سے احکام ہیں، جن پر ہم
-            شب روز عمل کرتے ہیں۔ ان میں ایک حکم اللہ کے دین کی نصرت یعنی مدد
-            ہے۔اس وقت ، اسلام سمیت تمام ادیان کو بہت سے چیلنجز کا سامنا ہے۔ ہم
-            مسلمانوں کا فرض ہے کہ اس مشکل دور میں اسلام کو&nbsp; درپیش ان مسائل
-            سے نکالیں۔ المورد اس بات پر یقین رکھتا ہے کہ تمام چیلنجز کا مقابلہ
-            اسلام کے صحیح فہم&nbsp; کو پھیلا&nbsp; کر کیا جاسکتا ہے۔
-          </p>
-          <p>
-            تو آئیے خدا کے خالص پیغام کو تمام انسانوں تک پہنچانے کے لیے&nbsp;
-            اپنی پیشہ ورانہ خدمات&nbsp; رضا کارانہ طور پر&nbsp; فراہم کرکے
-            المورد کے ساتھ عملی تعاون کیجیے۔
-          </p>
-          <br />
-          <p>جوائن کرنے والوں کو&nbsp; درج ذیل فوائد حاصل ہوں گی:</p>
-          <p>
-            1۔ المورد سوسائٹی کی ایکٹیویٹیز (اوپن مائیک, سلسلہ محاضرات اور بک
-            کلب وغیرہ) میں شامل ہونے کا موقع دیا جائے گا۔
-          </p>
-          <p>
-            2: غامدی صاحب کے دورہ پاکستان کے موقع پر منعقد کیے جانے والے
-            پروگرامز میں شرکت کے لئے فرینڈز آف المورد کو ترجیح دی جائے گی۔&nbsp;
-          </p>
-          <p>
-            3-&nbsp; فرینڈز آف المورد کے لئے ماہانہ ایک سیشن ہو گا جس میں علماء
-            کے ساتھ تربیتی اور علمی سوال و جواب کا موقع دیا جائے گا۔
-          </p>
-          <p>
-            نوٹ: نیچے دئیے گئے فارم کو فل کر کے فرینڈز آف المورد میں شمولیت
-            اختیار کی جا سکتی ہے۔
-          </p>
-          <p>
-            <br />
-          </p>
-        </div>
-      </div>
-      
       <div className="leading-10 mx-10 text-justify">
-        <h2 className="text-xl text-center my-8">Friends of Al Mawrid</h2>
-        <p>
-          Assalam o Alaikum! Let&apos;s come together to spread the message of
-          God.
-        </p>
-        <p>
-          In the teachings of Islam, there are many commands that we follow day
-          and night. One of these commands is the support of the religion of
-          Allah, which is known as &ldquo;Nusrat&ldquo; in Islam. At this time,
-          Islam, like all other religions, faces many challenges. As Muslims, we
-          must address the challenges confronting Islam during these difficult
-          times. Al Mawrid believes that all challenges can be met by spreading
-          the correct understanding of Islam.
-        </p>
-        <p>
-          Let us actively collaborate with Al Mawrid by offering our
-          professional and voluntary services to spread the unadulterated
-          message of God to every corner.
-        </p>
-        <br />
-        <p>Those who join us will receive the following benefits:</p>
-        <p>
-          1) The opportunity to participate in Al Mawrid Society activities
-          (such as open mic sessions, lecture series and book clubs).
-        </p>
-        <p>
-          2) Friends of Almawrid will be given preference to participate in the
-          programs organized on the occasion of Javed Ahmad Ghamdi&apos;s visit
-          to Pakistan.
-        </p>
-        <p>
-          3) A monthly meetup for Friends, with educational sessions and
-          question-and-answer opportunities with scholars.
-        </p>
-        <p>
-          Note: By filling out the form below, one can opt for Friends of Al
-          Mawrid membership.
-        </p>
+        <div className="">
+          {!English ? (
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded overflow-visible"
+              onClick={() => setEnglish(true)}
+            >
+              English
+            </button>
+          ) : (
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={() => setEnglish(false)}
+            >
+              اردو
+            </button>
+          )}
+        </div>
+        <div className="flex justify-center">
+          <img
+            src="/society.jpeg"
+            alt="Picture of the author"
+            className="w-60 h-60 mx-atuo"
+          />
+        </div>
+
+        {!English ? (
+          <div dir="rtl">
+            <div>
+              <h2 className="text-xl text-center my-8">فرینڈز آف المورد</h2>
+
+              <div>
+                <span>السلام علیکم،</span>
+              </div>
+              <br />
+              <div>
+                <span>
+                  آئیے، مل کر خدا کا پیغام عام کریں۔ دین کے بہت سے احکام ہیں، جن
+                  پر ہم شب روز عمل کرتے ہیں، ان میں ایک حکم اللہ کے دین کی نصرت،
+                  یعنی مدد ہے۔ اس وقت ، اسلام سمیت تمام ادیان کو بہت سے چیلنجز
+                  کا سامنا ہے، اس لیے ہم مسلمانوں کا فرض ہے کہ اس مشکل دور میں
+                  اسلام کو درپیش ان مسائل سے نکالیں۔ المورد اس بات پر یقین رکھتا
+                  ہے کہ تمام چیلنجز کا مقابلہ اسلام کے صحیح فہم کو پھیلا کر کیا
+                  جاسکتا ہے۔
+                </span>
+              </div>
+              <br />
+              <div>
+                <span>
+                  تو آئیے، خدا کے خالص پیغام کو تمام انسانوں تک پہنچانے کے لیے
+                  اپنی پیشہ ورانہ خدمات رضا کارانہ طور پر فراہم کرکے المورد کے
+                  ساتھ عملی تعاون کیجیے۔
+                </span>
+              </div>
+              <br />
+              <br />
+              <div>
+                <span>جوائن کرنے والوں کو درج ذیل فوائد حاصل ہوں گی:</span>
+              </div>
+              <br />
+              <div>
+                <span>
+                  1۔ المورد سوسائٹی کی ایکٹیویٹیز (اوپن مائیک، سلسلۂ محاضرات
+                  اور بک کلب وغیرہ) میں شامل ہونے کا موقع دیا جائے گا۔
+                </span>
+              </div>
+              <br />
+              <div>
+                <span>
+                  2: غامدی صاحب کے دورۂ پاکستان کے موقع پر منعقد کیے جانے والے
+                  پروگرامز میں شرکت کے لیے ’فرینڈز آف المورد‘ کو ترجیح دی جائے
+                  گی۔{" "}
+                </span>
+              </div>
+              <br />
+              <div>
+                <span>
+                  3-فرینڈز آف المورد کو دانش سرا (خانقاہ) کے پروگرامات اور
+                  نشستوں میں ترجیح دی جائے گی۔
+                </span>
+              </div>
+              <br />
+              <div>
+                <span>
+                  4- فرینڈز آف المورد کے لیے ماہانہ ایک سیشن ہو گا، جس میں علما
+                  کے ساتھ تربیتی اور علمی سوال و جواب کا موقع دیا جائے گا۔
+                </span>
+              </div>
+              <br />
+              <div>
+                <span>
+                  نوٹ: نیچے دیے گئے فارم کو فل کر کے ’فرینڈز آف المورد‘ میں
+                  شمولیت اختیار کی جا سکتی ہے:{" "}
+                </span>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="leading-10 mx-10 text-justify">
+            <h2 className="text-xl text-center my-8">Friends of Al Mawrid</h2>
+            <p>
+              Assalam o Alaikum! Let&apos;s come together to spread the message
+              of God.
+            </p>
+            <p>
+              In the teachings of Islam, there are many commands that we follow
+              day and night. One of these commands is the support of the
+              religion of Allah, which is known as &ldquo;Nusrat&ldquo; in
+              Islam. At this time, Islam, like all other religions, faces many
+              challenges. As Muslims, we must address the challenges confronting
+              Islam during these difficult times. Al Mawrid believes that all
+              challenges can be met by spreading the correct understanding of
+              Islam.
+            </p>
+            <p>
+              Let us actively collaborate with Al Mawrid by offering our
+              professional and voluntary services to spread the unadulterated
+              message of God to every corner.
+            </p>
+            <br />
+            <p>Those who join us will receive the following benefits:</p>
+            <p>
+              1) The opportunity to participate in Al Mawrid Society activities
+              (such as open mic sessions, lecture series and book clubs).
+            </p>
+            <p>
+              2) Friends of Almawrid will be given preference to participate in
+              the programs organized on the occasion of Javed Ahmad
+              Ghamdi&apos;s visit to Pakistan.
+            </p>
+            <p>
+              3) A monthly meetup for Friends, with educational sessions and
+              question-and-answer opportunities with scholars.
+            </p>
+            <p>
+              Note: By filling out the form below, one can opt for Friends of Al
+              Mawrid membership.
+            </p>
+          </div>
+        )}
       </div>
-      
+
       <p>
         <br />
       </p>
@@ -245,7 +299,7 @@ export default function Home() {
                 Label="Gender"
                 Name="Gender"
                 MainLabel="Select your gender"
-                Vals={["male", "femal"]}
+                Vals={["male", "female"]}
                 CName={CNAME}
               />
               <InputField
@@ -317,9 +371,12 @@ export default function Home() {
               <TextArea
                 type="textarea"
                 control={form.control}
-                Label="How can you help Al-Mawarid in conveying the message of religion to the people?"
-                Label2="دین کا پیغام لوگوں تک
-              پہنچانے میں آپ کس طرح المورد کی مدد کر سکتے ہیں؟"
+                Label={
+                  "How can you help Al-Mawrid in conveying the message of religion to the people?"
+                }
+                Label2={
+                  "دین کا پیغام لوگوں تک پہنچانے میں آپ کس طرح المورد کی مدد کر سکتے ہیں؟"
+                }
                 Name="HowHelpUs"
                 placeHolder=""
                 CName={CNAME}

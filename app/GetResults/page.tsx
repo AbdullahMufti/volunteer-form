@@ -17,29 +17,21 @@ const formSchema = z.object({
 });
 
 interface ResultInter {
+  ID: string;
+  Name: string;
+  FatherzName: string;
+  Profession: string;
+  Gender: string;
+  CNIC: string;
   Agegroup: string;
   AvailableGadgets: string;
   City: string;
   Country: string;
   DateTime: string;
-  FatherzName: string;
-  Gender: string;
   HowHelpUs: string;
-  HowManyHours: string;
-  ID: string;
-  ITRelated: string;
-  JoinWhatsapp: string;
-  ManageWebsites: string;
-  Name: string;
   PreviousExperience: string;
-  Profession: string;
   Qualification: string;
-  SocialMedia: string;
-  Translation: string;
-  VideoPhotoEditing: string;
   WhatsappNumber: string;
-  WhyFriend: string;
-  WordOfQuran: string;
 }
 
 const Results = () => {
@@ -127,22 +119,14 @@ const Results = () => {
     "Profession",
     "Agegroup",
     "Gender",
+    "CNIC",
     "Previous Experience",
     "Qualification",
     "Available Gadgets",
     "City",
     "Country",
     "Whatsapp Number",
-    "Join Whatsapp",
-    "Spread Word OfQuran",
-    "SocialMedia",
-    "Video Photo Editing",
-    "Manage Websites",
-    "Translation",
-    "IT Related",
-    "Why Friend",
     "How Help Us",
-    "How Many Hours",
     "Date & Time",
   ];
   return (
@@ -204,75 +188,23 @@ const Results = () => {
                     key={item.ID}
                     className="bg-bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                   >
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.ID}
+                    <td className="tablecell">{item.ID}</td>
+                    <td className="tablecell">{item.Name}</td>
+                    <td className="tablecell">{item.FatherzName}</td>
+                    <td className="tablecell">{item.Profession}</td>
+                    <td className="tablecell">{item.Agegroup}</td>
+                    <td className="tablecell">{item.Gender}</td>
+                    <td className="tablecell">
+                      {item.CNIC ? item.CNIC : "--"}
                     </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.Name}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.FatherzName}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.Profession}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.Agegroup}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.Gender}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.PreviousExperience}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.Qualification}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.AvailableGadgets}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.City}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.Country}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.WhatsappNumber}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.JoinWhatsapp === "0" ? "No" : "Yes"}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.WordOfQuran === "0" ? "No" : "Yes"}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.SocialMedia === "0" ? "No" : "Yes"}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.VideoPhotoEditing === "0" ? "No" : "Yes"}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.ManageWebsites === "0" ? "No" : "Yes"}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.Translation === "0" ? "No" : "Yes"}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.ITRelated === "0" ? "No" : "Yes"}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.WhyFriend}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.HowHelpUs}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.HowManyHours}
-                    </td>
-                    <td className="px-6 border-x-2 border-black dark:border-white py-4">
-                      {item.DateTime}
-                    </td>
+                    <td className="tablecell">{item.PreviousExperience}</td>
+                    <td className="tablecell">{item.Qualification}</td>
+                    <td className="tablecell">{item.AvailableGadgets}</td>
+                    <td className="tablecell">{item.City}</td>
+                    <td className="tablecell">{item.Country}</td>
+                    <td className="tablecell">{item.WhatsappNumber}</td>
+                    <td className="tablecell">{item.HowHelpUs}</td>
+                    <td className="tablecell">{item.DateTime}</td>
                   </tr>
                 ))}
               </tbody>

@@ -123,21 +123,16 @@ export const TextArea = ({
         name={Name}
         render={({ field }) => (
           <FormItem className="border p-4 rounded-lg border-black">
-            <div className="flex flex-col md:flex-row items-center justify-left ">
-              <FormLabel className="text-left w-full md:w-80 leading-7">
+            <div className="flex flex-col  items-center justify-left ">
+              <FormLabel className="text-left w-full  leading-7">
                 {Label}
               </FormLabel>
               {Label2 && (
-                <FormLabel>
-                  <div>
-                    <br />
-                    <FormLabel
-                      className="text-right w-full md:w-80 leading-10"
-                      dir="rtl"
-                    >
-                      {Label2}
-                    </FormLabel>
-                  </div>
+                <FormLabel
+                  className="float-right text-right w-full leading-10"
+                  dir="rtl"
+                >
+                  {Label2}
                 </FormLabel>
               )}
               <FormControl className="rounded-none border-black border-2  w-full mx-5">
