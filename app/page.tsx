@@ -134,6 +134,7 @@ export default function Home() {
             </button>
           )}
         </div>
+
         <div className="flex justify-center">
           <img
             src="/society.jpeg"
@@ -141,12 +142,30 @@ export default function Home() {
             className="w-60 h-60 mx-atuo"
           />
         </div>
+        {!English ? (
+          <div dir="rtl">
+            <h2 className="text-xl text-center my-8">
+              فرینڈز آف المورد <span className="text-sm"></span>
+            </h2>
+          </div>
+        ) : (
+          <div dir="ltr" className="leading-10 mx-10 text-justify">
+            <h2 className="text-xl text-center my-8">
+              Friends of Al Mawrid <span className="text-sm"></span>
+            </h2>
+          </div>
+        )}
 
+        <div className="relative w-full pb-[56.25%] h-0 overflow-hidden">
+          <iframe
+            src="https://drive.google.com/file/d/1qak4QgpXcaN06errJK79Cchq4bBa9YbW/preview"
+            allow="autoplay"
+            className="absolute top-0 left-0 w-full h-full border-0"
+          ></iframe>
+        </div>
         {!English ? (
           <div dir="rtl">
             <div>
-              <h2 className="text-xl text-center my-8">فرینڈز آف المورد</h2>
-
               <div>
                 <span>السلام علیکم،</span>
               </div>
@@ -207,15 +226,21 @@ export default function Home() {
               <br />
               <div>
                 <span>
-                  نوٹ: نیچے دیے گئے فارم کو فل کر کے ’فرینڈز آف المورد‘ میں
-                  شمولیت اختیار کی جا سکتی ہے:{" "}
+                  5 - فرینڈز آف المورد کو المورد کی تمام کتب پر 10 فیصد خصوصی
+                  ڈسکاونٹ حاصل ہو گا۔{" "}
+                </span>
+              </div>
+              <br />
+              <div>
+                <span>
+                  جاوید احمد غامدی کے پاکستان میں ادارے المورد سے وابستہ ہونے کے
+                  لئے درج ذیل فارم فل کریں۔
                 </span>
               </div>
             </div>
           </div>
         ) : (
           <div className="leading-10 mx-10 text-justify">
-            <h2 className="text-xl text-center my-8">Friends of Al Mawrid</h2>
             <p>
               Assalam o Alaikum! Let&apos;s come together to spread the message
               of God.
@@ -291,7 +316,7 @@ export default function Home() {
                 control={form.control}
                 Label="Profession"
                 Name="Profession"
-                placeHolder="Your Profession"
+                placeHolder="Profession"
                 CName={CNAME}
               />
               <SelectField
@@ -310,13 +335,12 @@ export default function Home() {
                 placeHolder="Enter your CNIC number"
                 CName={CNAME}
               />
-
-              <SelectField
+              <InputField
+                type="text"
                 control={form.control}
-                Label="Age Group"
+                Label="Age"
                 Name="Agegroup"
-                MainLabel="Select your age group"
-                Vals={["12-18", "18-25", "26-35", "36-45", "46-55", "55+"]}
+                placeHolder="Your Profession"
                 CName={CNAME}
               />
               <InputField
