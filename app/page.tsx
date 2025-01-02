@@ -156,131 +156,6 @@ export default function Home() {
           </div>
         )}
 
-        <div className="relative w-full pb-[56.25%] h-0 overflow-hidden">
-          <iframe
-            src="https://drive.google.com/file/d/1qak4QgpXcaN06errJK79Cchq4bBa9YbW/preview"
-            allow="autoplay"
-            className="absolute top-0 left-0 w-full h-full border-0"
-          ></iframe>
-        </div>
-        {!English ? (
-          <div dir="rtl">
-            <div>
-              <div>
-                <span>السلام علیکم،</span>
-              </div>
-              <br />
-              <div>
-                <span>
-                  آئیے، مل کر خدا کا پیغام عام کریں۔ دین کے بہت سے احکام ہیں، جن
-                  پر ہم شب روز عمل کرتے ہیں، ان میں ایک حکم اللہ کے دین کی نصرت،
-                  یعنی مدد ہے۔ اس وقت ، اسلام سمیت تمام ادیان کو بہت سے چیلنجز
-                  کا سامنا ہے، اس لیے ہم مسلمانوں کا فرض ہے کہ اس مشکل دور میں
-                  اسلام کو درپیش ان مسائل سے نکالیں۔ المورد اس بات پر یقین رکھتا
-                  ہے کہ تمام چیلنجز کا مقابلہ اسلام کے صحیح فہم کو پھیلا کر کیا
-                  جاسکتا ہے۔
-                </span>
-              </div>
-              <br />
-              <div>
-                <span>
-                  تو آئیے، خدا کے خالص پیغام کو تمام انسانوں تک پہنچانے کے لیے
-                  اپنی پیشہ ورانہ خدمات رضا کارانہ طور پر فراہم کرکے المورد کے
-                  ساتھ عملی تعاون کیجیے۔
-                </span>
-              </div>
-              <br />
-              <br />
-              <div>
-                <span>جوائن کرنے والوں کو درج ذیل فوائد حاصل ہوں گی:</span>
-              </div>
-              <br />
-              <div>
-                <span>
-                  1۔ المورد سوسائٹی کی ایکٹیویٹیز (اوپن مائیک، سلسلۂ محاضرات
-                  اور بک کلب وغیرہ) میں شامل ہونے کا موقع دیا جائے گا۔
-                </span>
-              </div>
-              <br />
-              <div>
-                <span>
-                  2: غامدی صاحب کے دورۂ پاکستان کے موقع پر منعقد کیے جانے والے
-                  پروگرامز میں شرکت کے لیے ’فرینڈز آف المورد‘ کو ترجیح دی جائے
-                  گی۔{" "}
-                </span>
-              </div>
-              <br />
-              <div>
-                <span>
-                  3-فرینڈز آف المورد کو دانش سرا (خانقاہ) کے پروگرامات اور
-                  نشستوں میں ترجیح دی جائے گی۔
-                </span>
-              </div>
-              <br />
-              <div>
-                <span>
-                  4- فرینڈز آف المورد کے لیے ماہانہ ایک سیشن ہو گا، جس میں علما
-                  کے ساتھ تربیتی اور علمی سوال و جواب کا موقع دیا جائے گا۔
-                </span>
-              </div>
-              <br />
-              <div>
-                <span>
-                  5 - فرینڈز آف المورد کو المورد کی تمام کتب پر 10 فیصد خصوصی
-                  ڈسکاونٹ حاصل ہو گا۔{" "}
-                </span>
-              </div>
-              <br />
-              <div>
-                <span>
-                  جاوید احمد غامدی کے پاکستان میں ادارے المورد سے وابستہ ہونے کے
-                  لئے درج ذیل فارم فل کریں۔
-                </span>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="leading-10 mx-10 text-justify">
-            <p>
-              Assalam o Alaikum! Let&apos;s come together to spread the message
-              of God.
-            </p>
-            <p>
-              In the teachings of Islam, there are many commands that we follow
-              day and night. One of these commands is the support of the
-              religion of Allah, which is known as &ldquo;Nusrat&ldquo; in
-              Islam. At this time, Islam, like all other religions, faces many
-              challenges. As Muslims, we must address the challenges confronting
-              Islam during these difficult times. Al Mawrid believes that all
-              challenges can be met by spreading the correct understanding of
-              Islam.
-            </p>
-            <p>
-              Let us actively collaborate with Al Mawrid by offering our
-              professional and voluntary services to spread the unadulterated
-              message of God to every corner.
-            </p>
-            <br />
-            <p>Those who join us will receive the following benefits:</p>
-            <p>
-              1) The opportunity to participate in Al Mawrid Society activities
-              (such as open mic sessions, lecture series and book clubs).
-            </p>
-            <p>
-              2) Friends of Almawrid will be given preference to participate in
-              the programs organized on the occasion of Javed Ahmad
-              Ghamdi&apos;s visit to Pakistan.
-            </p>
-            <p>
-              3) A monthly meetup for Friends, with educational sessions and
-              question-and-answer opportunities with scholars.
-            </p>
-            <p>
-              Note: By filling out the form below, one can opt for Friends of Al
-              Mawrid membership.
-            </p>
-          </div>
-        )}
       </div>
 
       <p>
@@ -340,7 +215,7 @@ export default function Home() {
                 control={form.control}
                 Label="Age"
                 Name="Agegroup"
-                placeHolder="Your Profession"
+                placeHolder="Age in years"
                 CName={CNAME}
               />
               <InputField
@@ -413,6 +288,176 @@ export default function Home() {
           </form>
         </Form>
       )}
+              <div className="relative w-full pb-[56.25%] h-0 overflow-hidden">
+          <iframe
+            src="https://drive.google.com/file/d/1qak4QgpXcaN06errJK79Cchq4bBa9YbW/preview"
+            allow="autoplay"
+            className="absolute top-0 left-0 w-full h-full border-0"
+          ></iframe>
+        </div>
+
+              {!English ? (
+         <div dir="rtl">
+         <div>
+           <div><span>السلام علیکم،</span></div>
+           <br />
+           <div>
+             <span
+               >آئیے، مل کر خدا کا پیغام عام کریں۔ دین کے بہت سے احکام ہیں، جن
+               پر ہم شب روز عمل کرتے ہیں، ان میں ایک حکم اللہ کے دین کی نصرت،
+               یعنی مدد ہے۔ اس وقت ، اسلام سمیت تمام ادیان کو بہت سے چیلنجز کا
+               سامنا ہے، اس لیے ہم مسلمانوں کا فرض ہے کہ اس مشکل دور میں اسلام
+               کو درپیش ان مسائل سے نکالیں۔ المورد اس بات پر یقین رکھتا ہے کہ
+               تمام چیلنجز کا مقابلہ اسلام کے صحیح فہم کو پھیلا کر کیا جاسکتا
+               ہے۔</span
+             >
+           </div>
+           <br />
+           <div>
+             <span
+               >تو آئیے، خدا کے خالص پیغام کو تمام انسانوں تک پہنچانے کے لیے
+               اپنی پیشہ ورانہ خدمات رضا کارانہ طور پر فراہم کرکے المورد کے
+               ساتھ عملی تعاون کیجیے۔</span
+             >
+           </div>
+           <br /><br />
+           <p>
+              فرینڈز آف المورد کو درج ذیل پروگرامز میں ترجیحی بنیادوں پر شمولیت
+             کا موقع دیا جائے گا (ان میں سے کچھ پروگرامز محض فرینڈز آف المورد
+             کے لئے ترتیب دئیے گئے ہیں جن میں صرف وہی شرکت کر سکتے ہیں):<br />
+           </p>
+           <br />
+           <ol type="I" className="list-decimal">
+             <li>
+               غامدی صاحب کے ساتھ نشستیں<br />جاوید احمد صاحب غامدی کے ساتھ
+               ہفتہ وار آن لائن نشستوں کا اہتمام کیا جارہا ہے۔ ان نشستوں میں
+               غامدی صاحب کے ساتھ باقاعدہ سوال و جواب کا موقع فراہم کیا جاتا
+               ہے۔ ان پروگرامز میں فرینڈز آف المورد کو ترجیحی بنیادوں پر شامل
+               کیا جائے گا۔<br />
+             </li>
+             <br />
+             <li>
+               اوپن مائیک / بیلی بیٹھک<br />اوپن مائیک سیشن گزشتہ چار برس سے
+               المورد لاہور میں منعقد کیا جارہا ہے۔ اب اس سیشن کو ملکی سطح پر
+               پھیلانے کے لیے اقدامات کیے جارہے ہیں۔ جس کا آغاذ پنجاب کے مختلف
+               شہروں سے ہونے جارہا ہے۔ فرینڈز آف المورد اپنے شہروں اور قصبوں
+               میں ان سیشنز کے انعقاد میں معاون ثابت ہو سکتے ہیں۔<br />
+             </li>
+             <br />
+             <li>
+               تذکیر بالقرآن کی نشست<br />دانش سرا میں تذکیر بالقرآن کی مختلف
+               نشستوں کا اہتمام کیا جارہا ہے۔ فرینڈز آف المورد کے لیے دانش سرا
+               میں تذکیر بالقرآن کے سہ ماہی تین روزہ پروگرام کا انعقاد کیا جا
+               رہا ہے۔ اس پروگرام میں انسانی نفس کی تذکیر و تربیت کے لیے قرآن
+               مجید سے رہنمائی حاصل کی جائے گی۔ جس میں دیگر شہروں سے آنے والے
+               احباب کے لیے رہائش کا بندوبست بھی کیا جائے گا۔
+             </li>
+             <br /><br />
+             <li>
+               دانش سرا (خانقاہ)<br />المورد کے مختلف اسکالرز روزانہ کی بنیاد
+               پر کچھ وقت کے لیے دانش سرا میں عوامی ملاقاتوں کے لیے موجود ہوتے
+               ہیں۔ جہاں لوگ ذاتی، علمی اور معاشرتی حوالے سے اپنے سوالات علما
+               کے سامنے رکھ سکتے ہیں۔
+             </li>
+             <br />
+             <li>
+               قرآن اسٹڈی سرکل<br />دین میں بنیادی حیثیت قرآن مجید کو حاصل ہے۔
+               المورد میں باقاعدہ ہر ہفتے ڈاکٹر ساجد حمید صاحب کے درسِ قرآن کا
+               انعقاد کیا جاتا ہے۔  فرینڈز آف المورد اس پروگرام میں اور دیگر
+               قرآن اسٹڈی سرکلز کا باقاعدہ حصہ بن سکتے ہیں۔
+             </li>
+             <br />
+             <li>
+               بک کلب سیشنز<br />المورد سوسائٹی کے زیرِ انتظام المورد میں
+               ماہانہ بُک کلب سیشن کا انعقاد کیا جاتا ہے۔ اس سیشن میں صاحبِ
+               کتاب کے ساتھ کتاب پر گفتگو کا موقع میسر آتا ہے۔ فرینڈز آف المورد
+               کو ان سیشنز میں ترجیحی بنیادوں پر شامل کیا جائے گا۔
+             </li>
+             <br />
+             <li>
+               محاضرات سیریز<br />المورد سوسائٹی کے زیر انتظام ماہانہ ایک ایسی
+               نشست کا اہتمام کیا جاتا ہے۔ جہاں ملک کے نامور اسکالرز کو مختلف
+               علمی، سماجی و سیاسی موضوعات پر گفتگو کے لیے مدعو کیا جاتا ہے۔
+               فرینڈز آف المورد کو ان سیشنز میں ترجیحی نشستیں فراہم کی جائیں
+               گی۔
+             </li>
+             <br />
+             <li>
+               رمضان المبارک تراویح مع ترجمۂ قرآن کا انتظام<br />دانش سرا میں
+               رمضان کے دوران میں تراویح مع ترجمۂ قرآن کا انتظام ہو گا۔
+             </li>
+             <br />
+             <li>
+               رمضان المبارک میں افطار کا اہتمام<br />دانش سرا میں رمضان کے
+               مہینے میں ہر جمعرات کو اوپن مائیک سیشن کے ساتھیوں کے ساتھ افطار
+               کا اہتمام کیا جاتا ہے۔
+             </li>
+             <br />
+             <li>
+               عید ملن پارٹی<br />المورد سوسائٹی کے زیرانتظام احباب کے مل
+               بیٹھنے، باہم گفت و شنید اور تفریح کے لیے سال میں ایک مرتبہ عید
+               ملن پارٹی کا اہتمام ہوتا ہے۔
+             </li>
+             <br />
+             <li>
+               دبستان شبلی کے اکابرین کی یاد میں سالانہ کانفرنس کا انعقاد<br />المورد
+               میں دبستان شبلی کے اکابر علما کے دین اسلام کی ترویج میں کردار
+               اور سماجی خدمات کی یاد میں مختلف کانفرنسوں کا انعقاد ہو گا۔
+             </li>
+           </ol>
+           <br />المورد کے اسکالرز کے مختلف شہروں کے دورے فرینڈز آف المور علماء
+           کرام کو اپنے شہروں میں ملاقاتوں کے لیے بلا سکیں گے۔<br /><br />
+           <div>
+             <span
+               >جاوید احمد صاحب غامدی کے پاکستان میں ادارے المورد سے وابستہ
+               ہونے کے لئے درج ذیل فارم فل کریں۔</span
+             >
+           </div>
+         </div>
+       </div>
+        ) : (
+          <div className="leading-10 mx-10 text-justify">
+            <p>
+              Assalam o Alaikum! Let&apos;s come together to spread the message
+              of God.
+            </p>
+            <p>
+              In the teachings of Islam, there are many commands that we follow
+              day and night. One of these commands is the support of the
+              religion of Allah, which is known as &ldquo;Nusrat&ldquo; in
+              Islam. At this time, Islam, like all other religions, faces many
+              challenges. As Muslims, we must address the challenges confronting
+              Islam during these difficult times. Al Mawrid believes that all
+              challenges can be met by spreading the correct understanding of
+              Islam.
+            </p>
+            <p>
+              Let us actively collaborate with Al Mawrid by offering our
+              professional and voluntary services to spread the unadulterated
+              message of God to every corner.
+            </p>
+            <br />
+            <p>Those who join us will receive the following benefits:</p>
+            <p>
+              1) The opportunity to participate in Al Mawrid Society activities
+              (such as open mic sessions, lecture series and book clubs).
+            </p>
+            <p>
+              2) Friends of Almawrid will be given preference to participate in
+              the programs organized on the occasion of Javed Ahmad
+              Ghamdi&apos;s visit to Pakistan.
+            </p>
+            <p>
+              3) A monthly meetup for Friends, with educational sessions and
+              question-and-answer opportunities with scholars.
+            </p>
+            <p>
+              Note: By filling out the form below, one can opt for Friends of Al
+              Mawrid membership.
+            </p>
+          </div>
+        )}
+
       {Result && (
         <div>
           <div className="text-2xl text-center">Thank you for Registration</div>
